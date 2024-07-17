@@ -12,34 +12,24 @@
     <a v-for="(menu, i) in menus" :key="i">{{ menu }}</a>
   </div>
 
-  <div>
-    <img src="./assets/room0.jpg" class="room-img">
-    <h4 @click="modal_open = true"> {{products[0]}} </h4>
-    <p> {{ prices[0] }} 만원 </p>
-    <button @click="increase(0)">허위매물신고</button> <span> 신고수 : {{ counts[0] }}</span>
+  <div v-for="(a, i) in 6" :key="a">
+    <img :src="rooms[i].image" class="room-img">
+    <h4> {{rooms[i].title}} </h4>
+    <p> {{rooms[i].price}} 원 </p>
   </div>
-  <div>
-    <img src="./assets/room1.jpg" class="room-img">
-    <h4> {{products[1]}} </h4>
-    <p> {{ prices[1] }} 만원 </p>
-    <button @click="increase(1)">허위매물신고</button> <span> 신고수 : {{ counts[1] }}</span>
-  </div>
-  <div>
-    <img src="./assets/room2.jpg" class="room-img">
-    <h4> {{products[2]}} </h4>
-    <p> {{ prices[2] }} 만원 </p>
-    <button @click="increase(2)">허위매물신고</button> <span> 신고수 : {{ counts[2] }}</span>
-  </div>
-
+  
 </template>
 
 <script>
+
+import data from './assets/data.js';
 
 export default {
   name: 'App',
   // 데이터 보관함
   data(){
     return {
+      rooms: data,
       modal_open: false,
       prices : [60, 70, 80],
       products : ['역삼동원룸', '천호동원룸', '마포구원룸'],
