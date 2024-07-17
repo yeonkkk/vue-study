@@ -4,9 +4,20 @@
     <a v-for="(menu, i) in menus" :key="i">{{ menu }}</a>
   </div>
 
-  <div v-for="(a, i) in 3" :key="i">
-    <h4> {{products[i]}} </h4>
-    <p> {{ prices[i]}} 만원 </p>
+  <div>
+    <h4> {{products[0]}} </h4>
+    <p> {{ prices[0] }} 만원 </p>
+    <button @click="increase(0)">허위매물신고</button> <span> 신고수 : {{ counts[0] }}</span>
+  </div>
+  <div>
+    <h4> {{products[1]}} </h4>
+    <p> {{ prices[1] }} 만원 </p>
+    <button @click="increase(1)">허위매물신고</button> <span> 신고수 : {{ counts[1] }}</span>
+  </div>
+  <div>
+    <h4> {{products[2]}} </h4>
+    <p> {{ prices[2] }} 만원 </p>
+    <button @click="increase(2)">허위매물신고</button> <span> 신고수 : {{ counts[2] }}</span>
   </div>
 
 </template>
@@ -20,7 +31,13 @@ export default {
     return {
       prices : [60, 70, 80],
       products : ['역삼동원룸', '천호동원룸', '마포구원룸'],
-      menus : ['Home', 'Shop', 'About']
+      menus : ['Home', 'Shop', 'About'],
+      counts : [0, 0, 0]
+    }
+  },
+  methods: {
+    increase(i) {
+      this.counts[i] += 1;
     }
   },
   components: {
