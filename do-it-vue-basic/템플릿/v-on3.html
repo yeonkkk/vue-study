@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Vue Template - Event Handling</title>
+  </head>
+  <body>
+    <div id="app">
+      <button v-on:click="clickBtn">클릭</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        methods: {
+          clickBtn: function(event) { // 인자값으로 이벤트 전달
+            console.log(event); // 화면 요소의 돔 이벤트에 접근 가능해짐
+            console.log(event instanceof MouseEvent)
+            console.log(event instanceof PointerEvent) 
+            // 책에는 MouseEvent 를 인자로 받는다고 나와있는데 실제로는 PointerEvent가 들어옴
+            // 찾아보니 최신 브라우저는 기본 이벤트를 PointerEvent로 바꿨다고 함
+          }
+        }
+      });
+    </script>
+  </body>
+</html>
