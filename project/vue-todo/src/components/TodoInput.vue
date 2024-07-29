@@ -18,13 +18,12 @@ export default {
 
     methods: {
         addTodo() {
-            if (this.newTodoItem !== "") {
-                // 로컬 스토리지에 데이터 추가 (키 : 값)
-                localStorage.setItem(this.newTodoItem, this.newTodoItem);
-                this.clearInput();
-            }
-        },
-
+      if (this.newTodoItem !== "") {
+        var value = this.newTodoItem && this.newTodoItem.trim();
+        this.$emit('addTodo', value);
+        this.clearInput();
+      }
+    },
         clearInput() {
             this.newTodoItem = '';
         }
@@ -37,6 +36,7 @@ input:focus {
     /* 인풋박스 선 스타일 지정 */
     outline: none;
 }
+
 .inputBox {
     background: white;
     height: 50px;
@@ -44,10 +44,12 @@ input:focus {
     /* 인풋박스 둥근 테두리 속성 */
     border-radius: 5px;
 }
+
 .inputBox input {
     border-style: none;
     font-size: 0.9rem;
 }
+
 .addContainer {
     /* 추가 버튼 표시 위치 정의 */
     float: right;
@@ -56,6 +58,7 @@ input:focus {
     width: 3rem;
     border-radius: 0 5px 5px 0;
 }
+
 .addBtn {
     color: white;
     /* 추가 아이콘 수직 정렬 정의 */
